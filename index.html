@@ -620,21 +620,15 @@ footer{border-top:1px solid var(--line-navy);margin-top:60px;padding:30px 0}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Two ways to learn</span>
-      <h2>Hybrid or online?</h2>
-      <p>One focus: your success. Pick the format that fits your schedule — tap below to see what each one really means.</p>
+      <h2>How the program works</h2>
+      <p>The CNS program at Abilene is a <strong>hybrid program</strong> — a blend of in-person and online coursework designed to give you real hands-on experience with the flexibility to get things done.</p>
     </div>
 
-    <div class="toggle-row reveal" role="tablist">
-      <button id="tHybrid" class="on" role="tab">Hybrid</button>
-      <button id="tOnline" role="tab">100% Online</button>
-    </div>
-
-    <div class="mode-grid reveal">
-      <div class="feature-list" id="featureList"><!-- injected --></div>
-      <div class="fit-card">
-        <h4 id="fitTitle">Choose Hybrid if you…</h4>
-        <ul id="fitList"></ul>
-      </div>
+    <div class="feature-list reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px">
+      <div class="feature"><div class="ic">🏫</div><h4>In-person meetings</h4><p>Attend classes on campus on a set schedule, typically 1–2 days per week.</p></div>
+      <div class="feature"><div class="ic">💻</div><h4>Online component</h4><p>Complete assignments, discussions, and some instruction online — on your schedule.</p></div>
+      <div class="feature"><div class="ic">👥</div><h4>Collaboration</h4><p>Face-to-face interaction with instructors and classmates to enhance learning and teamwork.</p></div>
+      <div class="feature"><div class="ic">⏰</div><h4>Structured schedule</h4><p>A consistent weekly rhythm of in-person and online activities keeps you on track.</p></div>
     </div>
 
     <div class="same reveal">
@@ -915,42 +909,6 @@ footer{border-top:1px solid var(--line-navy);margin-top:60px;padding:30px 0}
       else{item.classList.add("is-open");panel.style.maxHeight=panel.scrollHeight+"px";head.setAttribute("aria-expanded","true");}
     });
   });
-
-  /* ---------- HYBRID / ONLINE ---------- */
-  var MODES={
-    hybrid:{
-      title:"Choose Hybrid if you…",
-      fit:["Learn best with some in-person interaction","Want a structured schedule","Value face-to-face collaboration"],
-      features:[
-        {ic:"🏫",h:"In-person meetings",p:"On campus on a flex schedule, as requested by the student."},
-        {ic:"💻",h:"Online component",p:"Assignments, discussions, and instructional content happen online."},
-        {ic:"👥",h:"Collaboration",p:"Face-to-face time with instructors and classmates, as desired, use of program discord server."},
-        {ic:"⏰",h:"Structured/Flexible schedule",p:"No structured schedule due to our open lab policy. Students can use the lab M-Th 8am - 5pm"}
-      ]
-    },
-    online:{
-      title:"Choose Online if you…",
-      fit:["Need maximum flexibility","Prefer to learn from anywhere","Are comfortable managing your own time"],
-      features:[
-        {ic:"🌐",h:"100% online",p:"All coursework, lectures, and discussions completed online."},
-        {ic:"🗓️",h:"Flexible learning",p:"Access materials anytime, work at your own pace within deadlines."},
-        {ic:"💬",h:"Virtual collaboration",p:"Connect through discussion boards, chat, and video meetings."},
-        {ic:"🎯",h:"Self-motivated",p:"Best for independent, organized, self-disciplined students."}
-      ]
-    }
-  };
-  var fl=document.getElementById("featureList"), fitT=document.getElementById("fitTitle"), fitL=document.getElementById("fitList");
-  var bH=document.getElementById("tHybrid"), bO=document.getElementById("tOnline");
-  function renderMode(m){
-    var d=MODES[m];
-    fl.innerHTML=d.features.map(function(f){return '<div class="feature"><div class="ic">'+f.ic+'</div><h4>'+f.h+'</h4><p>'+f.p+'</p></div>';}).join("");
-    fitT.textContent=d.title;
-    fitL.innerHTML=d.fit.map(function(x){return "<li>"+x+"</li>";}).join("");
-    bH.classList.toggle("on",m==="hybrid"); bO.classList.toggle("on",m==="online");
-  }
-  bH.addEventListener("click",function(){renderMode("hybrid");});
-  bO.addEventListener("click",function(){renderMode("online");});
-  renderMode("hybrid");
 
   /* ---------- SCROLL REVEAL ---------- */
   if(!reduce && "IntersectionObserver" in window){
